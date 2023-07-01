@@ -97,21 +97,23 @@ export function UpdateUsername(): JSX.Element {
         open={open}
         closeModal={cancelUpdateUsername}
       >
-        <UsernameModal
-          loading={loading}
-          available={available}
-          alreadySet={alreadySet}
-          changeUsername={changeUsername}
-          cancelUpdateUsername={cancelUpdateUsername}
-        >
-          <InputField
-            label='Username'
-            inputId='username'
-            inputValue={inputValue}
-            errorMessage={errorMessage}
-            handleChange={handleChange}
-          />
-        </UsernameModal>
+        <div style={{marginBottom: '20px'}}>
+          <UsernameModal
+            loading={loading}
+            available={available}
+            alreadySet={alreadySet}
+            changeUsername={changeUsername}
+            cancelUpdateUsername={cancelUpdateUsername}
+          >
+            <InputField
+              label='Username'
+              inputId='username'
+              inputValue={inputValue}
+              errorMessage={errorMessage}
+              handleChange={handleChange}
+            />
+          </UsernameModal>
+        </div>
       </Modal>
       <Button
         className='dark-bg-tab group relative p-2 hover:bg-light-primary/10

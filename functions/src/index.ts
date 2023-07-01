@@ -4,3 +4,4 @@ admin.initializeApp();
 
 export * from './normalize-stats';
 export * from './notify-email';
+export * from './next-server';

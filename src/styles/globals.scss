@@ -41,6 +41,10 @@
   body {
     @apply hover-animation bg-main-background font-twitter-chirp text-light-primary dark:text-dark-primary;
   }
+  
+  .img-2-rem img {
+    height:2rem;
+  }
 }
 
 @layer components {

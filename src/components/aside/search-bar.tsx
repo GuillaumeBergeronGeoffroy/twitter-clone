@@ -37,7 +37,7 @@ export function SearchBar(): JSX.Element {
       className='hover-animation sticky top-0 z-10 -my-2 bg-main-background py-2'
       onSubmit={handleSubmit}
     >
-      <label
+      {/* <label
         className='group flex items-center justify-between gap-4 rounded-full
                    bg-main-search-background px-4 py-2 transition focus-within:bg-main-background
                    focus-within:ring-2 focus-within:ring-main-accent'
@@ -70,7 +70,7 @@ export function SearchBar(): JSX.Element {
         >
           <HeroIcon className='h-3 w-3 stroke-white' iconName='XMarkIcon' />
         </Button>
-      </label>
+      </label> */}
     </form>
   );
 }

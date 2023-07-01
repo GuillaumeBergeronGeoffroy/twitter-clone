@@ -40,9 +40,10 @@ export function UsernameModal({
     <form
       className='flex h-full flex-col justify-between'
       onSubmit={changeUsername}
+      
     >
       <div className='flex flex-col gap-6'>
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4' >
           <i className='mx-auto'>
             <CustomIcon className='h-10 w-10' iconName='TwitterIcon' />
           </i>
@@ -57,7 +58,7 @@ export function UsernameModal({
         </div>
         {children}
       </div>
-      <div className='flex flex-col gap-3 inner:py-2 inner:font-bold'>
+      <div className='flex flex-col gap-3 inner:py-2 inner:font-bold' style={{marginTop:'20px'}}>
         <Button
           className='bg-light-primary text-white transition focus-visible:bg-light-primary/90
                      enabled:hover:bg-light-primary/90 enabled:active:bg-light-primary/80 

@@ -21,10 +21,10 @@ export function HomeLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       {children}
-      <Aside>
+      {/* <Aside>
         <AsideTrends />
         <Suggestions />
-      </Aside>
+      </Aside> */}
     </>
   );
 }
@@ -33,10 +33,10 @@ export function UserLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       {children}
-      <Aside>
+      {/* <Aside>
         <Suggestions />
         <AsideTrends />
-      </Aside>
+      </Aside> */}
     </>
   );
 }
@@ -45,9 +45,9 @@ export function TrendsLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       {children}
-      <Aside>
+      {/* <Aside>
         <Suggestions />
-      </Aside>
+      </Aside> */}
     </>
   );
 }
@@ -56,9 +56,9 @@ export function PeopleLayout({ children }: LayoutProps): JSX.Element {
   return (
     <>
       {children}
-      <Aside>
+      {/* <Aside>
         <AsideTrends />
-      </Aside>
+      </Aside> */}
     </>
   );
 }
