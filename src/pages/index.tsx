@@ -9,7 +9,7 @@ export default function Login(): JSX.Element {
     <div className='grid min-h-screen grid-rows-[1fr,auto]'>
       <SEO
         title='Cramer Twitter'
-        description='∞ CRYPTO, No Rate Limit, No Problems.'
+        description='∞ CRYPTO, 0 Limits.'
       />
       <LoginMain />
       <LoginFooter />
