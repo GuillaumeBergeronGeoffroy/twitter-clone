@@ -13,7 +13,7 @@ export function LoginMain(): JSX.Element {
           imgClassName='object-cover'
           blurClassName='bg-accent-blue'
           src='/assets/nuke.png'
-          alt='Twitter banner'
+          alt='Cramer Twitter banner'
           layout='fill'
           useSkeleton
         />
@@ -32,7 +32,7 @@ export function LoginMain(): JSX.Element {
           <span style={{marginBottom: '-50px', fontSize:'24px'}}>CRAMER TWITTER</span>
           <h1
             className='text-3xl before:content-[""] 
-                       lg:text-6xl lg:before:content-["∞_CRYPTO"]'
+                       lg:text-6xl lg:before:content-["∞_CRYPTO,_No_Rate_Limit"]'
           />
           <h2 className='hidden text-xl lg:block lg:text-3xl'>
             Join <span style={{color: 'rgb(64, 228, 84)'}}>CT</span> today.

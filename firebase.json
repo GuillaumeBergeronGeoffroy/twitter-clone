@@ -15,19 +15,5 @@
   },
   "storage": {
     "rules": "storage.rules"
-  },
-  "hosting": {
-    "public": ".next",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "function": "nextServer"
-      }
-    ]
   }
 }
