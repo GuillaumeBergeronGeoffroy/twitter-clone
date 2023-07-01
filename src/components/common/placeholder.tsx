@@ -6,7 +6,7 @@ export function Placeholder(): JSX.Element {
     <main className='flex min-h-screen items-center justify-center'>
       <SEO
         title='Cramer Twitter'
-        description='∞ CRYPTO, No Rate Limit, No Problem.'
+        description='∞ CRYPTO, No Rate Limit, No Problems.'
         image='/home.png'
       />
       <i>

@@ -32,7 +32,7 @@ export default function UserLikes(): JSX.Element {
       <SEO
         title={`Tweets liked by ${name as string} (@${
           username as string
-        }) / Twitter`}
+        }) / CT`}
       />
       {loading ? (
         <Loading className='mt-5' />
