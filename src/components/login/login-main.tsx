@@ -1,10 +1,15 @@
+import { useState } from 'react';
 import { useAuth } from '@lib/context/auth-context';
 import { NextImage } from '@components/ui/next-image';
 import { CustomIcon } from '@components/ui/custom-icon';
 import { Button } from '@components/ui/button';
+import { useModal } from '@lib/hooks/useModal';
+import { Modal } from '@components/modal/modal';
+import { SignInUpModal } from '@components/modal/sign-in-up-modal';
 
 export function LoginMain(): JSX.Element {
-  const { signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signUpWithEmailPassword, signInWithEmailPassword, error } = useAuth();
+  const { open, openModal, closeModal } = useModal();
 
   return (
     <main className='grid lg:grid-cols-[1fr,45vw]'>
@@ -46,19 +51,8 @@ export function LoginMain(): JSX.Element {
                          dark:hover:brightness-90 dark:focus-visible:brightness-90 dark:active:brightness-75'
               onClick={signInWithGoogle}
             >
-              <CustomIcon iconName='GoogleIcon' /> Sign up with Google
+              <CustomIcon iconName='GoogleIcon' /> Sign in with Google
             </Button>
-            {/* <div className='grid w-full grid-cols-[1fr,auto,1fr] items-center gap-2'>
-              <i className='border-b border-light-border dark:border-dark-border' />
-              <p>or</p>
-              <i className='border-b border-light-border dark:border-dark-border' />
-            </div>
-            <Button
-              className='cursor-not-allowed bg-accent-blue text-white transition hover:brightness-90
-                         focus-visible:!ring-accent-blue/80 focus-visible:brightness-90 active:brightness-75'
-            >
-              Sign up with phone or email
-            </Button> */}
             {/* <p
               className='inner:custom-underline inner:custom-underline text-center text-xs
                          text-light-secondary inner:text-accent-blue dark:text-dark-secondary'
@@ -92,14 +86,37 @@ export function LoginMain(): JSX.Element {
           </div>
           <div className='flex flex-col gap-3'>
             {/* <p className='font-bold'>Already have an account? </p> */}
-            <Button
+            {/* <Button
               className='border border-light-line-reply font-bold text-accent-blue hover:bg-accent-blue/10
                          focus-visible:bg-accent-blue/10 focus-visible:!ring-accent-blue/80 active:bg-accent-blue/20
                          dark:border-light-secondary'
               onClick={signInWithGoogle}
             >
               Sign in
-            </Button>
+            </Button> */}
+            <div className='grid w-full grid-cols-[1fr,auto,1fr] items-center gap-2'>
+              <i className='border-b border-light-border dark:border-dark-border' />
+              <p>or</p>
+              <i className='border-b border-light-border dark:border-dark-border' />
+            </div>
+            <div></div>
+            {/* <Button
+              onClick={openModal}
+              className='bg-accent-green text-white transition hover:brightness-90
+                         focus-visible:!ring-accent-blue/80 focus-visible:brightness-90 active:brightness-75'
+            >
+              Sign in with Email
+            </Button> */}
+            {/* <Modal
+                modalClassName='flex flex-col gap-6 max-w-xl bg-main-background w-full p-8 rounded-2xl h-[270px] max-w-[300px]'
+                open={open}
+                closeModal={closeModal}
+              > */}
+              <SignInUpModal 
+                signInWithEmailPassword={signInWithEmailPassword} 
+                signUpWithEmailPassword={signUpWithEmailPassword}
+              />
+            {/* </Modal> */}
           </div>
         </div>
       </div>

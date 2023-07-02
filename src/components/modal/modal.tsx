@@ -66,8 +66,8 @@ export function Modal({
               className={modalClassName}
               as={motion.div}
               {...(modalAnimation ?? modal)}
-              onClick={closePanelOnClick ? closeModal : undefined}
-            >
+              onClick={closePanelOnClick ? closeModal : (e) => e.stopPropagation()}
+              >
               {children}
             </Dialog.Panel>
           </div>

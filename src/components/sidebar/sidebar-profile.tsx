@@ -31,7 +31,7 @@ export function SidebarProfile(): JSX.Element {
           useIcon
           focusOnMainBtn
           title='Log out of CT?'
-          description='You can always log back in at any time. If you just want to switch accounts, you can do that by adding an existing account.'
+          description='You can always log back in at any time. Remember to Always Inverse Cramer while you are out. We will miss you!'
           mainBtnLabel='Log out'
           action={signOut}
           closeModal={closeModal}
@@ -49,7 +49,7 @@ export function SidebarProfile(): JSX.Element {
               )}
             >
               <div className='flex gap-3 truncate'>
-                <UserAvatar src={photoURL} alt={name} size={40} />
+                {/* <UserAvatar src={photoURL} alt={name} size={40} /> */}
                 <div className='hidden truncate text-start leading-5 xl:block'>
                   <UserName name={name} className='start' verified={verified} />
                   <UserUsername username={username} disableLink />

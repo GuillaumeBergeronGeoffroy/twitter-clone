@@ -3,7 +3,9 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
-  signOut as signOutFirebase
+  signOut as signOutFirebase,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from 'firebase/auth';
 import {
   doc,
@@ -35,6 +37,8 @@ type AuthContext = {
   userBookmarks: Bookmark[] | null;
   signOut: () => Promise<void>;
   signInWithGoogle: () => Promise<void>;
+  signUpWithEmailPassword: (email: string, password: string) => Promise<void>;
+  signInWithEmailPassword: (email: string, password: string) => Promise<void>;
 };
 
 export const AuthContext = createContext<AuthContext | null>(null);
@@ -53,7 +57,12 @@ export function AuthContextProvider({
 
   useEffect(() => {
     const manageUser = async (authUser: AuthUser): Promise<void> => {
-      const { uid, displayName, photoURL } = authUser;
+      const { uid, displayName } = authUser;
+      let { photoURL } = authUser;
+
+      if (!photoURL) {
+        photoURL = "https://firebasestorage.googleapis.com/v0/b/cramer-f5c2b.appspot.com/o/images%2FBy4HYplGhCVWdB9UjqDH0gF6Vi12%2Fcramerface.png?alt=media&token=02a7107c-d137-48c0-8403-cbdb45d0c8b2";
+      }
 
       const userSnapshot = await getDoc(doc(usersCollection, uid));
 
@@ -166,11 +175,30 @@ export function AuthContextProvider({
     }
   };
 
+  const signUpWithEmailPassword = async (email: string, password: string): Promise<void> => {  
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setError(error as Error);
+      throw error;
+    }
+  };
+
+  const signInWithEmailPassword = async (email: string, password: string): Promise<void> => {  
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      setError(error as Error);
+      throw error;
+    }
+  };
+
   const signOut = async (): Promise<void> => {
     try {
       await signOutFirebase(auth);
     } catch (error) {
       setError(error as Error);
+      throw error;
     }
   };
 
@@ -185,7 +213,9 @@ export function AuthContextProvider({
     randomSeed,
     userBookmarks,
     signOut,
-    signInWithGoogle
+    signInWithGoogle,
+    signUpWithEmailPassword,
+    signInWithEmailPassword
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

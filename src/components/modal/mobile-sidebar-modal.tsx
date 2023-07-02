@@ -121,7 +121,7 @@ export function MobileSidebarModal({
           useIcon
           focusOnMainBtn
           title='Log out of CT?'
-          description='You can always log back in at any time. If you just want to switch accounts, you can do that by adding an existing account.'
+          description='You can always log back in at any time. Remember to Always Inverse Cramer while you are out. We will miss you!'
           mainBtnLabel='Log out'
           action={signOut}
           closeModal={logOutCloseModal}

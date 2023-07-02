@@ -4,11 +4,12 @@ import type { KeyboardEvent, ChangeEvent } from 'react';
 
 export type InputFieldProps = {
   label: string;
-  inputId: EditableData | Extract<keyof User, 'username'>;
+  inputId: EditableData | Extract<keyof User, 'username'> | 'password' | 'email';
   inputValue: string | null;
   inputLimit?: number;
   useTextArea?: boolean;
   errorMessage?: string;
+  password?: boolean;
   handleChange: (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => void;
@@ -19,6 +20,7 @@ export type InputFieldProps = {
 };
 
 export function InputField({
+  password,
   label,
   inputId,
   inputValue,
@@ -60,7 +62,7 @@ export function InputField({
             className='peer mt-6 w-full bg-inherit px-3 pb-1
                        placeholder-transparent outline-none transition'
             id={inputId}
-            type='text'
+            type={password ? 'password' : 'text'}
             placeholder={inputId}
             onChange={!isHittingInputLimit ? handleChange : undefined}
             value={slicedInputValue}
