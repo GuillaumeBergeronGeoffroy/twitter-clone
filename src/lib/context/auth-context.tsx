@@ -61,7 +61,7 @@ export function AuthContextProvider({
       let { photoURL } = authUser;
 
       if (!photoURL) {
-        photoURL = "https://firebasestorage.googleapis.com/v0/b/cramer-f5c2b.appspot.com/o/images%2FBy4HYplGhCVWdB9UjqDH0gF6Vi12%2Fcramerface.png?alt=media&token=02a7107c-d137-48c0-8403-cbdb45d0c8b2";
+        photoURL = 'https://firebasestorage.googleapis.com/v0/b/cramer-f5c2b.appspot.com/o/images%2FBy4HYplGhCVWdB9UjqDH0gF6Vi12%2Fcramerface.png?alt=media&token=02a7107c-d137-48c0-8403-cbdb45d0c8b2';
       }
 
       const userSnapshot = await getDoc(doc(usersCollection, uid));

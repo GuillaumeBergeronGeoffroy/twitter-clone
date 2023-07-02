@@ -76,7 +76,7 @@
       }
     ],
     "@typescript-eslint/consistent-type-imports": "warn",
-    "@typescript-eslint/prefer-nullish-coalescing": "warn",
+    // "@typescript-eslint/prefer-nullish-coalescing": "warn",
     "@typescript-eslint/explicit-function-return-type": "warn"
   }
 }
