@@ -90,7 +90,9 @@ export function Input({
       createdAt: serverTimestamp(),
       updatedAt: null,
       userReplies: 0,
-      userRetweets: []
+      userRetweets: [],
+      userBuys: [],
+      userSells: [],
     };
 
     await sleep(500);

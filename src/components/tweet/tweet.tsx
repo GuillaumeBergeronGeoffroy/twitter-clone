@@ -48,6 +48,8 @@ export function Tweet(tweet: TweetProps): JSX.Element {
     parentTweet,
     userReplies,
     userRetweets,
+    userBuys,
+    userSells,
     user: tweetUserData
   } = tweet;
 
@@ -192,6 +194,8 @@ export function Tweet(tweet: TweetProps): JSX.Element {
                     userLikes={userLikes}
                     userReplies={userReplies}
                     userRetweets={userRetweets}
+                    userBuys={userBuys}
+                    userSells={userSells}
                     openModal={!parent ? openModal : undefined}
                   />
                 )}

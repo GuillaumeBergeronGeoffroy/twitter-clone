@@ -260,6 +260,48 @@ export function manageLike(
   };
 }
 
+// manage buys/sells
+export function manageBuySell(
+  type: 'buy' | 'sell',
+  userId: string,
+  tweetId: string
+) {
+  return async (): Promise<void> => {
+    const batch = writeBatch(db);
+
+    console.log('manageBuySell', type, userId, tweetId);
+
+    // const userStatsRef = doc(userStatsCollection(userId), 'stats');
+    const tweetRef = doc(tweetsCollection, tweetId);
+
+    if (type === 'buy') {
+      batch.update(tweetRef, {
+        userBuys: arrayUnion(userId),
+        updatedAt: serverTimestamp()
+      });
+      // batch.update(userStatsRef, {
+      //   likes: arrayUnion(tweetId),
+      //   updatedAt: serverTimestamp()
+      // });
+    } else if (type === 'sell') {
+      batch.update(tweetRef, {
+        userSells: arrayUnion(userId),
+        updatedAt: serverTimestamp()
+      });
+      // batch.update(userStatsRef, {
+      //   likes: arrayRemove(tweetId),
+      //   updatedAt: serverTimestamp()
+      // });
+    }
+
+    await batch.commit();
+
+    // get debug and console.log
+
+  };
+}
+
+
 export async function manageBookmark(
   type: 'bookmark' | 'unbookmark',
   userId: string,

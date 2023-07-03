@@ -28,7 +28,7 @@
     --accent-pink: 249 26 130;
     --accent-purple: 120 87 255;
     --accent-orange: 255 122 0;
-    --accent-green: 0 184 122;
+    --accent-green: 64 228 84;
   }
 
   a,
@@ -47,6 +47,29 @@
   }
   .width-100 {
     width:100%;
+  }
+  .buy-sell {
+    font-size: 14px;
+    border-radius: 25px !important;
+    margin-bottom: 10px;
+    border-color: #ffffff57 !important;
+  }
+  .hover-text-white {
+    color: white;
+  }
+  .buy-sell div:first-of-type:not(:hover):not(.text-white) {
+    color:rgb(64, 228, 84);
+  }
+  .buy-sell div:last-of-type:not(:hover):not(.text-white) {
+    color:rgb(255, 0, 0);
+  }
+  .buy-sell-top {
+    // border-top:none;
+    // border-top-left-radius: 0 !important;
+    // border-top-right-radius: 0 !important;
+    // border-bottom-left-radius:10px !important;
+    // border-bottom-right-radius:10px !important;
+    margin-top:10px;
   }
 }
 
