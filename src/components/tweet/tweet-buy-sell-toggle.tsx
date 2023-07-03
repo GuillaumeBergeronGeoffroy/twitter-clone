@@ -35,7 +35,7 @@ export function TweetBuySellToggle({viewTweet, userId, tweetId, tweetIsBuy, twee
   };
 
   return (
-    <div onClick={(event) => event.stopPropagation()} className={`flex border border-gray-400 rounded-lg overflow-hidden buy-sell ${viewTweet ? 'buy-sell-top' : ''}`}>
+    <div style={{ height: '2.5rem' }} onClick={(event) => event.stopPropagation()} className={`flex border border-gray-400 rounded-lg overflow-hidden buy-sell ${viewTweet ? 'buy-sell-top' : ''}`}>
       { !(tweetIsBuy || tweetIsSell) ? (
         <>
           <div
@@ -54,14 +54,14 @@ export function TweetBuySellToggle({viewTweet, userId, tweetId, tweetIsBuy, twee
           </div>
         </>
       ) : (
-      <>
-        <span className='py-2 bg-green-500' style={{ width: `${buyPercentage}%`, display: 'inline-block', textAlign: 'center', color: 'white', minWidth: `${buyPercentage > 0 ? '2.5rem' : 0}` }}>
-        {buyPercentage}%
-        </span>
-        <span className='py-2' style={{ width: `${sellPercentage}%`, background: '#d90429', display: 'inline-block', textAlign: 'center', color: 'white', minWidth: `${sellPercentage > 0 ? '2.5rem' : 0}` }}>
-          {sellPercentage}%
-        </span>
-      </>
+        <>
+          <span className='py-2 bg-green-500' style={{ width: `${buyPercentage}%`, display: 'inline-block', textAlign: 'center', color: 'white', minWidth: `${buyPercentage > 0 ? '2.5rem' : 0}` }}>
+          {buyPercentage}% ({totalBuys})
+          </span>
+          <span className='py-2' style={{ width: `${sellPercentage}%`, background: '#d90429', display: 'inline-block', textAlign: 'center', color: 'white', minWidth: `${sellPercentage > 0 ? '2.5rem' : 0}` }}>
+            {sellPercentage}% ({totalSells})
+          </span>
+        </>
       )}
     </div>
   );
