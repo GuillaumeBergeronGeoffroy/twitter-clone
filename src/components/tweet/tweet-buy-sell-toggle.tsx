@@ -10,7 +10,7 @@ export function TweetBuySellToggle({viewTweet, userId, tweetId, tweetIsBuy, twee
     if (total === 0) {
       return 0;
     }
-    return (part / total) * 100;
+    return Math.round((part / total) * 100);
   };
 
   const buyPercentage = computePercentage(totalBuys, totalVotes);
