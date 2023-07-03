@@ -92,7 +92,7 @@ export function Input({
       userReplies: 0,
       userRetweets: [],
       userBuys: [],
-      userSells: [],
+      userSells: []
     };
 
     await sleep(500);
