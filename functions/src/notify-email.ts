@@ -26,13 +26,11 @@ export const notifyEmail = regionalFunctions.firestore
 
     const tweetLink = `https://twitter-clone-ccrsxx.vercel.app/tweet/${snapshot.id}`;
 
-    const emailHeader = `New Tweet${
-      parent ? ' reply' : ''
-    } from ${name} (@${username})`;
+    const emailHeader = `New Tweet${parent ? ' reply' : ''
+      } from ${name} (@${username})`;
 
-    const emailText = `${text ?? 'No text provided'}${
-      images ? ` (${imagesLength} image${imagesLength > 1 ? 's' : ''})` : ''
-    }\n\nLink to Tweet: ${tweetLink}\n\n- Firebase Function.`;
+    const emailText = `${text ?? 'No text provided'}${images ? ` (${imagesLength} image${imagesLength > 1 ? 's' : ''})` : ''
+      }\n\nLink to Tweet: ${tweetLink}\n\n- Firebase Function.`;
 
     await client.sendMail({
       from: EMAIL_API.value(),
