@@ -15,6 +15,7 @@ import { TweetActions } from './tweet-actions';
 import { TweetStatus } from './tweet-status';
 import { TweetStats } from './tweet-stats';
 import { TweetDate } from './tweet-date';
+import { TweetWithLinks } from './tweet-with-links';
 import type { Variants } from 'framer-motion';
 import type { Tweet } from '@lib/types/tweet';
 import type { User } from '@lib/types/user';
@@ -175,7 +176,7 @@ export function Tweet(tweet: TweetProps): JSX.Element {
                 </p>
               )}
               {text && (
-                <p className='whitespace-pre-line break-words'>{text}</p>
+                <p className='whitespace-pre-line break-words'><TweetWithLinks text={text} /></p>
               )}
               <div className='mt-1 flex flex-col gap-2'>
                 {images && (

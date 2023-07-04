@@ -14,6 +14,7 @@ import { variants } from '@components/tweet/tweet';
 import { TweetActions } from '@components/tweet/tweet-actions';
 import { TweetStats } from '@components/tweet/tweet-stats';
 import { TweetDate } from '@components/tweet/tweet-date';
+import { TweetWithLinks } from '@components/tweet/tweet-with-links';
 import { Input } from '@components/input/input';
 import type { RefObject } from 'react';
 import type { User } from '@lib/types/user';
@@ -128,7 +129,7 @@ export function ViewTweet(tweet: ViewTweetProps): JSX.Element {
       )}
       <div>
         {text && (
-          <p className='whitespace-pre-line break-words text-2xl'>{text}</p>
+          <p className='whitespace-pre-line break-words text-2xl'><TweetWithLinks text={text} /></p>
         )}
         {images && (
           <ImagePreview

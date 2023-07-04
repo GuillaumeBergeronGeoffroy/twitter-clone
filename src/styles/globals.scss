@@ -71,6 +71,9 @@
     // border-bottom-right-radius:10px !important;
     margin-top:10px;
   }
+  .underline-hover:hover {
+    text-decoration: underline;
+  }
 }
 
 @layer components {
