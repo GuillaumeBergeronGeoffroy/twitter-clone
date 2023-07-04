@@ -41,9 +41,9 @@ export function DisplayModal({ closeModal }: DisplayModalProps): JSX.Element {
           <UserAvatar src='/assets/cramerface.png' alt='Twitter' />
           <div>
             <div className='flex gap-1'>
-              <UserName verified name='Twitter' />
+              <UserName verified name='Jim Cramer' />
               <p className='text-light-secondary dark:text-dark-secondary'>
-                @twitter
+                @jimcramer
               </p>
               <div className='flex gap-1 text-light-secondary dark:text-dark-secondary'>
                 <i>·</i>
@@ -51,7 +51,7 @@ export function DisplayModal({ closeModal }: DisplayModalProps): JSX.Element {
               </div>
             </div>
             <p className='whitespace-pre-line break-words'>
-              At the heart of Twitter are short messages called Tweets — just
+              At the heart of CT are short messages called Inverse — just
               like this one — which can include photos, videos, links, text,
               hashtags, and mentions like{' '}
               <span className='text-main-accent'>@twitter</span>.
