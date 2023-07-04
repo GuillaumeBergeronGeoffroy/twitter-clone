@@ -33,7 +33,7 @@ export default function UserMedia(): JSX.Element {
   return (
     <section>
       <SEO
-        title={`Media Tweets by ${name as string} (@${
+        title={`Media posts by ${name as string} (@${
           username as string
         }) / CT`}
       />
@@ -41,9 +41,9 @@ export default function UserMedia(): JSX.Element {
         <Loading className='mt-5' />
       ) : !sortedTweets ? (
         <StatsEmpty
-          title={`@${username as string} hasn't Tweeted Media`}
-          description='Once they do, those Tweets will show up here.'
-          imageData={{ src: '/assets/no-media.png', alt: 'No media' }}
+          title={`@${username as string} hasn't inversed Media`}
+          description='Once they do, those posts will show up here.'
+          imageData={{ src: '/assets/nothing.jpg', alt: 'No media' }}
         />
       ) : (
         <AnimatePresence mode='popLayout'>
