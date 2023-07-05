@@ -1,5 +1,6 @@
 import React, { MouseEvent } from 'react';
 import Linkify from 'react-linkify';
+import Link from 'next/link';
 
 interface Props {
   text: string;
@@ -10,8 +11,8 @@ export const TweetWithLinks: React.FC<Props> = ({ text }) => {
   const parts = text.split(/(\$\w+)/g);
 
   const handleCustomClick = (event: MouseEvent<HTMLSpanElement>, part: string) => {
-    event.preventDefault();
     event.stopPropagation();
+    // in time i would like to display overlay with ticker price and stats and most recent tweets
     // Do something with the custom link click
     // alert(`You clicked ${part}`);
   };
@@ -28,9 +29,11 @@ export const TweetWithLinks: React.FC<Props> = ({ text }) => {
         if (/\$\w+/.test(part)) {
           // Render the matching segments as a clickable link
           return (
-            <span className='text-main-accent cursor-pointer no-underline underline-hover' key={index} onClick={(event) => handleCustomClick(event, part)}>
-              {part}
-            </span>
+            <Link key={index} href={'/tickers?id=' + part}>
+              <span className='text-main-accent cursor-pointer no-underline underline-hover' onClick={(event) => handleCustomClick(event, part)}>
+                {part}
+              </span>
+            </Link>
           );
         } else {
           // Render non-matching segments as plain text

@@ -149,6 +149,7 @@ export function Tweet(tweet: TweetProps): JSX.Element {
                 <div className='px-4'>
                   {!modal && (
                     <TweetActions
+                      text={text}
                       isOwner={isOwner}
                       ownerId={ownerId}
                       tweetId={tweetId}

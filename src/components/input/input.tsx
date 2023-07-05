@@ -9,10 +9,11 @@ import {
   manageReply,
   uploadImages,
   manageTotalTweets,
-  manageTotalPhotos
+  manageTotalPhotos,
+  manageTickers
 } from '@lib/firebase/utils';
 import { useAuth } from '@lib/context/auth-context';
-import { sleep } from '@lib/utils';
+import { sleep, getTickers } from '@lib/utils';
 import { getImagesData } from '@lib/validation';
 import { UserAvatar } from '@components/user/user-avatar';
 import { InputForm, fromTop } from './input-form';
@@ -101,10 +102,16 @@ export function Input({
       addDoc(tweetsCollection, tweetData),
       manageTotalTweets('increment', userId),
       tweetData.images && manageTotalPhotos('increment', userId),
-      isReplying && manageReply('increment', parent?.id as string)
+      isReplying && manageReply('increment', parent?.id as string),
     ]);
 
     const { id: tweetId } = await getDoc(tweetRef);
+
+    // check tweet text to parse different $tags
+    const tickers = getTickers(inputValue.trim() || '');
+    if(tickers.length) {
+      await manageTickers('add', tickers, tweetId);
+    }
 
     if (!modal && !replyModal) {
       discardTweet();

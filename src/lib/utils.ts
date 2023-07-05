@@ -45,3 +45,15 @@ export function getStatsMove(movePixels: number): MotionProps {
 export function isPlural(count: number): string {
   return count > 1 ? 's' : '';
 }
+
+export function getTickers(text: string): string[] {
+  // array of string
+  const tickers = [];
+  const parts = (text).split(/(\$\w+)/g);
+  parts.map((part, index) => {
+    if (/\$\w+/.test(part)) {
+      tickers.push(part.toUpperCase());
+    }
+  });
+  return tickers;
+}

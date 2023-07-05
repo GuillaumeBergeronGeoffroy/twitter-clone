@@ -14,9 +14,10 @@ import {
   manageFollow,
   managePinnedTweet,
   manageTotalTweets,
-  manageTotalPhotos
+  manageTotalPhotos,
+  manageTickers
 } from '@lib/firebase/utils';
-import { delayScroll, preventBubbling, sleep } from '@lib/utils';
+import { delayScroll, preventBubbling, sleep, getTickers } from '@lib/utils';
 import { Modal } from '@components/modal/modal';
 import { ActionModal } from '@components/modal/action-modal';
 import { Button } from '@components/ui/button';
@@ -38,6 +39,7 @@ export const variants: Variants = {
 };
 
 type TweetActionsProps = Pick<Tweet, 'createdBy'> & {
+  text: string | undefined;
   isOwner: boolean;
   ownerId: string;
   tweetId: string;
@@ -65,6 +67,7 @@ const pinModalData: Readonly<PinModalData[]> = [
 ];
 
 export function TweetActions({
+  text,
   isOwner,
   ownerId,
   tweetId,
@@ -105,11 +108,15 @@ export function TweetActions({
         } else await push('/home');
       } else await push('/home');
 
+        // check tweet text to parse different $tags
+    const tickers = getTickers(text || '');
+
     await Promise.all([
       removeTweet(tweetId),
       manageTotalTweets('decrement', ownerId),
       hasImages && manageTotalPhotos('decrement', createdBy),
-      parentId && manageReply('decrement', parentId)
+      parentId && manageReply('decrement', parentId),
+      tickers.length && manageTickers('remove', tickers, tweetId)
     ]);
 
     toast.success(

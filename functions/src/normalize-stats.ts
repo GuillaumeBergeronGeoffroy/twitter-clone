@@ -10,9 +10,9 @@ export const normalizeStats = regionalFunctions.firestore
 
     functions.logger.info(`Normalizing stats from tweet ${tweetId}`);
 
-    const { userRetweets, userLikes, userBuys, userSells } = tweetData;
+    const { userRetweets, userLikes } = tweetData;
 
-    const usersStatsToDelete = new Set([...userRetweets, ...userLikes, ...userBuys, ...userSells]);
+    const usersStatsToDelete = new Set([...userRetweets, ...userLikes]);
 
     const batch = firestore().batch();
 

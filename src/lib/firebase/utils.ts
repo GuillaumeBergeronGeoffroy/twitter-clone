@@ -4,6 +4,7 @@ import {
   where,
   limit,
   setDoc,
+  getDoc,
   getDocs,
   updateDoc,
   deleteDoc,
@@ -20,12 +21,14 @@ import {
   usersCollection,
   tweetsCollection,
   userStatsCollection,
-  userBookmarksCollection
+  userBookmarksCollection,
+  tickersCollection
 } from './collections';
 import type { WithFieldValue, Query } from 'firebase/firestore';
 import type { EditableUserData } from '@lib/types/user';
 import type { FilesWithId, ImagesPreview } from '@lib/types/file';
 import type { Bookmark } from '@lib/types/bookmark';
+import type { Tickers } from '@lib/types/tickers';
 import type { Theme, Accent } from '@lib/types/theme';
 
 export async function checkUsernameAvailability(
@@ -326,5 +329,51 @@ export async function clearAllBookmarks(userId: string): Promise<void> {
 
   bookmarksSnapshot.forEach(({ ref }) => batch.delete(ref));
 
+  await batch.commit();
+}
+
+export async function manageTickers(type: 'add' | 'remove', tickers: string[], tweetId: string): Promise<void> {
+  const batch = writeBatch(db);
+
+  for (const ticker of tickers) {
+    const tickerRef = doc(tickersCollection, ticker);
+
+    // Get the current ticker document
+    const tickerSnap = await getDoc(tickerRef);
+
+    // If ticker does not exist and type is 'add', create a new ticker
+    if (!tickerSnap.exists() && type === 'add') {
+      const newTicker: WithFieldValue<Tickers> = {
+        name: ticker,
+        tweets: [tweetId],
+        createdAt: serverTimestamp()
+      };
+      batch.set(tickerRef, newTicker);
+      continue;
+    }
+
+    // If ticker does not exist and type is 'remove', skip
+    if (!tickerSnap.exists() && type === 'remove') {
+      continue;
+    }
+
+    // At this point, the ticker document must exist
+    const tickerData = tickerSnap.data();
+
+    if (type === 'add') {
+      // Add the tweetId to the tweets array if it's not already there
+      if (!tickerData.tweets.includes(tweetId)) {
+        tickerData.tweets.push(tweetId);
+      }
+    } else if (type === 'remove') {
+      // Remove the tweetId from the tweets array
+      tickerData.tweets = tickerData.tweets.filter(id => id !== tweetId);
+    }
+
+    // Update the ticker document in the batch
+    batch.update(tickerRef, tickerData);
+  }
+
+  // Commit the batch
   await batch.commit();
 }

@@ -104,6 +104,7 @@ export function ViewTweet(tweet: ViewTweetProps): JSX.Element {
             </div>
             <div className='px-4'>
               <TweetActions
+                text={text}
                 viewTweet
                 isOwner={isOwner}
                 ownerId={ownerId}
