@@ -102,7 +102,7 @@ export function Input({
       addDoc(tweetsCollection, tweetData),
       manageTotalTweets('increment', userId),
       tweetData.images && manageTotalPhotos('increment', userId),
-      isReplying && manageReply('increment', parent?.id as string),
+      isReplying && manageReply('increment', parent?.id as string)
     ]);
 
     const { id: tweetId } = await getDoc(tweetRef);
