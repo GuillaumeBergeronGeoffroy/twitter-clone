@@ -4,6 +4,7 @@ export type Tickers = {
     name: string;
     tweets: string[];
     createdAt: Timestamp;
+    updatedAt: Timestamp;
 };
 
 export const tickersConverter: FirestoreDataConverter<Tickers> = {

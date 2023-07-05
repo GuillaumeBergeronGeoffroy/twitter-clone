@@ -163,12 +163,12 @@ export function TweetActions({
         closeModal={removeCloseModal}
       >
         <ActionModal
-          title='Delete Tweet?'
+          title='Inverse Inverse?'
           description={`This can’t be undone and it will be removed from ${
             isInAdminControl ? `@${username}'s` : 'your'
           } profile, the timeline of any accounts that follow ${
             isInAdminControl ? `@${username}` : 'you'
-          }, and from Twitter search results.`}
+          }, and from CT search results.`}
           mainBtnClassName='bg-accent-red hover:bg-accent-red/90 active:bg-accent-red/75 accent-tab
                             focus-visible:bg-accent-red/90'
           mainBtnLabel='Delete'

@@ -343,10 +343,11 @@ export async function manageTickers(type: 'add' | 'remove', tickers: string[], t
 
     // If ticker does not exist and type is 'add', create a new ticker
     if (!tickerSnap.exists() && type === 'add') {
-      const newTicker: WithFieldValue<Tickers> = {
+      const newTicker = {
         name: ticker,
         tweets: [tweetId],
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
       };
       batch.set(tickerRef, newTicker);
       continue;
@@ -371,7 +372,10 @@ export async function manageTickers(type: 'add' | 'remove', tickers: string[], t
     }
 
     // Update the ticker document in the batch
-    batch.update(tickerRef, tickerData);
+    batch.update(tickerRef, {
+      ...tickerData,
+      updatedAt: serverTimestamp()
+    });
   }
 
   // Commit the batch
