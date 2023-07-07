@@ -59,7 +59,6 @@ export function AsideTickers(): JSX.Element {
       }
     });
 
-    console.log(filteredTickersData);
 }
 
     
@@ -78,12 +77,23 @@ export function AsideTickers(): JSX.Element {
             <Link key={i} href={`/tickers?id=${tickerData.name}`}>
               <div className='width-100 flex items-center justify-between cursor-pointer accent-tab hover-animation
               hover:bg-light-primary/5 dark:hover:bg-dark-primary/5'>
-                  <span className='text-bold text-left' style={{width:'25px'}}>{i == 0 ? '🏆' : (i == 1 ? '🥈' : (i == 2 ? '🥉' : (tickerData.latest ? '🕒' : (tickerData.new ? '🆕' : ''))))}</span>
+                  <span className='text-bold text-left flex' style={{width:'50px'}}>
+                    {i == 0 ? '🏆' : (i == 1 ? '🥈' : (i == 2 ? '🥉' : ''))}
+                    {tickerData.latest ?
+                    (<span style={{marginLeft:'5px'}}>
+                      🕒
+                    </span>) : (<></>)}
+                    {tickerData.new ?
+                    (<span style={{marginLeft:'5px'}}>
+                      🆕
+                    </span>) : (<></>)}
+                  </span>
                   <a className='text-center text-main-text text-lg text-main-accent cursor-pointer no-underline underline-hover'>{tickerData.name}</a>
-                  <span className='text-bold text-right'>
+                  <span className='text-bold text-right' style={{width:'50px'}}>
                     {tickerData.tweets.length} 🔥
                   </span>
               </div>
+              
             </Link>
           ))}
           {/* <Link href='/people'>
