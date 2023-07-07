@@ -71,7 +71,7 @@ export function AsideTickers(): JSX.Element {
         <Loading className='flex h-52 items-center justify-center p-4' />
       ) : filteredTickersData ? (
         <motion.div className='inner:px-4 inner:py-3' {...variants}>
-          <h2 className='text-xl font-bold text-center'>🔥 TOP TICKERS 🔥</h2>
+          <h2 className='text-xl font-bold text-center'>HOT TICKERS</h2>
           {/* {adminData && <UserCard {...adminData} />} */}
           {filteredTickersData?.map((tickerData, i) => (
             <Link key={i} href={`/tickers?id=${tickerData.name}`}>
